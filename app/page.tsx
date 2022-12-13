@@ -3,7 +3,9 @@ import React from "react";
 const HomePage = () => {
 	return (
 		<div>
-			<h1 className="text-red-500">Hello</h1>
+			{/* Chat messgae */}
+
+			{/* Send Message  */}
 		</div>
 	);
 };

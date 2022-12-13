@@ -1,4 +1,5 @@
 import Image from "next/image";
+import Link from "next/link";
 import React from "react";
 import logo from "../public/assets/whatsappLogo.svg";
 import { SignOutBtn } from "./SignOutBtn";
@@ -6,7 +7,7 @@ import { SignOutBtn } from "./SignOutBtn";
 export const Header = () => {
 	const session = false;
 
-	if (!session) {
+	if (session) {
 		return (
 			<header className="flex flex-col items-center justify-center sticky p-10 border-b shadow-sm space-y-2">
 				<div className="flex items-center space-x-2 ">
@@ -17,7 +18,12 @@ export const Header = () => {
 				</div>
 
 				{/* sign in/out button */}
-				<SignOutBtn />
+				<Link
+					href="/auth/signIn"
+					className="p-2 bg-green-500 hover:bg-green-600 text-lg font-semibold  rounded text-white"
+				>
+					Sign In
+				</Link>
 			</header>
 		);
 	}
