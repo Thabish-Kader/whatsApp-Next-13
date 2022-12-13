@@ -16,7 +16,7 @@ export const SendMessage = () => {
 
 	return (
 		<form
-			className="fixed bottom-0 w-full p-2"
+			className="fixed bottom-0 w-full p-4"
 			onSubmit={(e) => handleSubmit}
 		>
 			<div className="flex items-center space-x-1">
