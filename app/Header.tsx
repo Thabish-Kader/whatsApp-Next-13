@@ -18,10 +18,7 @@ export const Header = () => {
 				</div>
 
 				{/* sign in/out button */}
-				<Link
-					href="/auth/signIn"
-					className="p-2 bg-green-500 hover:bg-green-600 text-lg font-semibold  rounded text-white"
-				>
+				<Link href="/auth/signIn" className="button">
 					Sign In
 				</Link>
 			</header>
