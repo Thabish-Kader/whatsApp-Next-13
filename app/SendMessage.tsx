@@ -1,7 +1,8 @@
 "use client";
 
 import { useState } from "react";
-
+import { v4 as uuidv4 } from "uuid";
+import { sendMessage } from "../lib/sendMessage";
 export const SendMessage = () => {
 	const [input, setInput] = useState("");
 
@@ -9,16 +10,22 @@ export const SendMessage = () => {
 		e.preventDefault();
 
 		if (!input) return;
-
 		const messgae = input;
+		const messageToSend: Message = {
+			id: uuidv4(),
+			message: messgae,
+			created_at: Date.now(),
+			username: "byte",
+			profilePic:
+				"https://my.kumonglobal.com/wp-content/uploads/2022/03/Learn-from-Rowan-Atkinson_Kumon-Malaysia_530x530_NewsThumbnail.jpg",
+			email: "bean@email.com",
+		};
+		sendMessage(messageToSend);
 		setInput("");
 	};
 
 	return (
-		<form
-			className="fixed bottom-0 w-full p-4"
-			onSubmit={(e) => handleSubmit}
-		>
+		<form className="fixed bottom-0 w-full p-4" onSubmit={handleSubmit}>
 			<div className="flex items-center space-x-1">
 				<input
 					value={input}
