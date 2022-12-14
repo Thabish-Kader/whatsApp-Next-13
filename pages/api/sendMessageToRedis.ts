@@ -16,7 +16,7 @@ export default async function handler(
 	res: NextApiResponse<Data | Error>
 ) {
 	if (req.method !== "POST") {
-		res.status(405).send({ errorMessage: "John Doe" });
+		res.status(405).send({ errorMessage: "Wrong method type" });
 		return;
 	}
 	const { data } = req.body;
