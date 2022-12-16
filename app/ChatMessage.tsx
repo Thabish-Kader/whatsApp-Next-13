@@ -1,15 +1,16 @@
 "use client";
 import useSWR from "swr";
 import { fetcher } from "../lib/getMessages";
+import { SingleMessage } from "./SingleMessage";
 
 export const ChatMessage = () => {
 	const { data, error } = useSWR("/api/getMessages", fetcher);
-	const messages: Message[] = data.messages;
-	console.log(messages);
+	const messages: Message[] = data?.messages;
+	// console.log(messages);
 	return (
-		<div>
+		<div className="space-y-5 max-w-2xl lg:max-w-5xl mx-auto pb-24 mt-5">
 			{messages?.map((msg) => (
-				<p>{msg.message}</p>
+				<SingleMessage key={msg.id} msg={msg} />
 			))}
 		</div>
 	);
