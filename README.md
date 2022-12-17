@@ -12,3 +12,9 @@ after: ` await redis.hset("messages", data.id, JSON.stringify(modifiedMessage));
 
 -   [Caching NextJS Apps with Serverless Redis using Upstash](https://flatlogic.com/blog/caching-nextjs-apps-with-serverless-redis-using-upstash/)
 -   [Sorting an array based on dates](https://www.scaler.com/topics/javascript-sort-an-array-of-objects/)
+
+[How to use SWR in Next JS - client-side data-fetching technique](https://cloudcoders.xyz/blog/how-to-use-swr-in-next-js-client-side-data-fetching-technique/)
+
+### Food for taught
+
+-   Can SWR replcae redux ?

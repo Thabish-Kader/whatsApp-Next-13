@@ -1,18 +1,18 @@
 import { getProviders } from "next-auth/react";
 import Image from "next/image";
 import { SignInComponent } from "../../SignInComponent";
-
+import whatsapp from "../../../public/assets/whatsappLogo.svg";
 const SignInPage = async () => {
 	const providers = await getProviders();
 	return (
 		<div className="grid justify-center">
-			<div>
+			<div className="mt-32">
 				<Image
 					className="rounded-full mx-2 object-cover"
-					width={700}
-					height={700}
+					width={300}
+					height={300}
 					alt="profile pic"
-					src="https://links.papareact.com/161"
+					src={whatsapp}
 				/>
 			</div>
 			<SignInComponent providers={providers} />
