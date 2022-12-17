@@ -1,4 +1,6 @@
 export const fetcher = async () => {
 	const res = await fetch("/api/getMessages");
-	return res.json();
+	const data = await res.json();
+	const messages: Message[] = data.messages;
+	return messages;
 };

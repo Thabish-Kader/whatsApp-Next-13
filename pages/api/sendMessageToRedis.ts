@@ -27,6 +27,6 @@ export default async function handler(
 	};
 	await redis.hset("messages", data.id, JSON.stringify(modifiedMessage));
 
-	console.log("Data sent to redis " + modifiedMessage);
+	// console.log("Data sent to redis " + modifiedMessage);
 	res.status(200).json({ message: modifiedMessage });
 }

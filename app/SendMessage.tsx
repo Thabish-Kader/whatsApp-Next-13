@@ -1,16 +1,14 @@
 "use client";
-import useSWR from "swr";
+import useSWR, { useSWRConfig } from "swr";
 import { useState } from "react";
 import { v4 as uuidv4 } from "uuid";
 import { sendMessage } from "../lib/sendMessage";
 import { fetcher } from "../lib/getMessages";
+
 export const SendMessage = () => {
 	const [input, setInput] = useState("");
-	// const {
-	// 	data: messages,
-	// 	error,
-	// 	mutate,
-	// } = useSWR("/api/getMessages", fetcher);
+	const { data: messages, error } = useSWR("/api/getMessages", fetcher);
+	const { mutate } = useSWRConfig();
 	const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
 		e.preventDefault();
 
@@ -25,7 +23,12 @@ export const SendMessage = () => {
 				"https://my.kumonglobal.com/wp-content/uploads/2022/03/Learn-from-Rowan-Atkinson_Kumon-Malaysia_530x530_NewsThumbnail.jpg",
 			email: "bean@email.com",
 		};
+
 		sendMessage(messageToSend);
+		await mutate("/api/getMessages", sendMessage(messageToSend), {
+			optimisticData: [messageToSend, ...messages!],
+			rollbackOnError: true,
+		});
 		setInput("");
 	};
 

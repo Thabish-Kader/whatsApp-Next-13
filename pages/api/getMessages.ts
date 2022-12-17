@@ -23,9 +23,9 @@ export default async function handler(
 	const messages: Message[] = messagesRes
 		.map((msg) => JSON.parse(msg))
 		.sort((x, y) => {
-			return x.created_at - y.created_at;
+			return y.created_at - x.created_at;
 		});
 
-	console.log(messages);
+	// console.log(messages);
 	res.status(200).json({ messages });
 }

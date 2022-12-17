@@ -1,5 +1,3 @@
-import useSWR from "swr";
-
 export const sendMessage = async (data: Message) => {
 	const res = await fetch("/api/sendMessageToRedis", {
 		method: "POST",
