@@ -15,6 +15,8 @@ after: ` await redis.hset("messages", data.id, JSON.stringify(modifiedMessage));
 
 [How to use SWR in Next JS - client-side data-fetching technique](https://cloudcoders.xyz/blog/how-to-use-swr-in-next-js-client-side-data-fetching-technique/)
 
+-   [How to scroll to bottom in react?](https://stackoverflow.com/questions/37620694/how-to-scroll-to-bottom-in-react)
+
 ### Food for taught
 
 -   Can SWR replcae redux ?
