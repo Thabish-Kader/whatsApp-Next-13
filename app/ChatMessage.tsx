@@ -16,7 +16,7 @@ export const ChatMessage = ({ initialMessages }: Props) => {
 		mutate,
 	} = useSWR<Message[] | null>("/api/getMessages", fetcher);
 
-	const messagesEndRef = useRef(null);
+	const messagesEndRef = useRef<null | HTMLDivElement>(null);
 
 	const scrollToBottom = () => {
 		messagesEndRef.current?.scrollIntoView({ behavior: "smooth" });
