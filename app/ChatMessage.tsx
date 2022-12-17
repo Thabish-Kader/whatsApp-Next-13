@@ -1,15 +1,30 @@
 "use client";
+import { useEffect } from "react";
 import useSWR from "swr";
 import { fetcher } from "../lib/getMessages";
+import { clientPusher } from "../pusher";
 import { SingleMessage } from "./SingleMessage";
 
 export const ChatMessage = () => {
-	const { data: messages, error } = useSWR<Message[]>(
-		"/api/getMessages",
-		fetcher
-	);
+	const {
+		data: messages,
+		error,
+		mutate,
+	} = useSWR<Message[] | null>("/api/getMessages", fetcher);
 
-	console.log(messages);
+	useEffect(() => {
+		const channel = clientPusher.subscribe("messages");
+		channel.bind("new-message", async (data: Message) => {
+			if (!messages) {
+				mutate(fetcher);
+			} else {
+				mutate(fetcher, {
+					optimisticData: [data, ...messages],
+					rollbackOnError: true,
+				});
+			}
+		});
+	}, [messages, mutate, clientPusher]);
 	return (
 		<div className="space-y-5 max-w-2xl lg:max-w-5xl mx-auto pb-24 mt-5">
 			{messages?.map((msg) => (

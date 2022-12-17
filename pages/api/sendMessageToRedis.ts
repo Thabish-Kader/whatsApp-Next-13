@@ -1,6 +1,6 @@
 // Next.js API route support: https://nextjs.org/docs/api-routes/introduction
 import type { NextApiRequest, NextApiResponse } from "next";
-import { loadGetInitialProps } from "next/dist/shared/lib/utils";
+import { serverPusher } from "../../pusher";
 import { redis } from "../../redis";
 
 type Error = {
@@ -26,6 +26,7 @@ export default async function handler(
 		created_at: Date.now(),
 	};
 	await redis.hset("messages", data.id, JSON.stringify(modifiedMessage));
+	serverPusher.trigger("messages", "new-message", modifiedMessage);
 
 	// console.log("Data sent to redis " + modifiedMessage);
 	res.status(200).json({ message: modifiedMessage });
