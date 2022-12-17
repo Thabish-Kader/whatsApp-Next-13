@@ -1,13 +1,15 @@
+"use client";
 import Image from "next/image";
 import Link from "next/link";
 import React from "react";
 import logo from "../public/assets/whatsappLogo.svg";
 import { SignOutBtn } from "./SignOutBtn";
+import { useSession } from "next-auth/react";
 
 export const Header = () => {
-	const session = false;
+	const { data: session } = useSession();
 
-	if (session) {
+	if (!session) {
 		return (
 			<header className="flex flex-col items-center justify-center sticky p-10 border-b shadow-sm space-y-2">
 				<div className="flex items-center space-x-2 ">

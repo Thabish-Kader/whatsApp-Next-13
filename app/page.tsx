@@ -1,4 +1,3 @@
-import React from "react";
 import { ChatMessage } from "./ChatMessage";
 import { SendMessage } from "./SendMessage";
 import { unstable_getServerSession } from "next-auth";
@@ -12,12 +11,14 @@ const HomePage = async () => {
 	// console.log(messages);
 	const session = await unstable_getServerSession();
 	return (
-		<Providers session={session}>
-			{/* Chat messgae */}
-			<ChatMessage initialMessages={messages} />
-			{/* Send Message  */}
-			<SendMessage />
-		</Providers>
+		<>
+			<Providers session={session}>
+				{/* Chat messgae */}
+				<ChatMessage initialMessages={messages} />
+				{/* Send Message  */}
+				<SendMessage />
+			</Providers>
+		</>
 	);
 };
 

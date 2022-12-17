@@ -2,6 +2,7 @@ import { getProviders } from "next-auth/react";
 import Image from "next/image";
 import { SignInComponent } from "../../SignInComponent";
 import whatsapp from "../../../public/assets/whatsappLogo.svg";
+
 const SignInPage = async () => {
 	const providers = await getProviders();
 	return (
