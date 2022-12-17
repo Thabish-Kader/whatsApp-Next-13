@@ -1,5 +1,5 @@
 "use client";
-import { useEffect } from "react";
+import React, { useEffect, useRef } from "react";
 import useSWR from "swr";
 import { fetcher } from "../lib/getMessages";
 import { clientPusher } from "../pusher";
@@ -15,6 +15,16 @@ export const ChatMessage = ({ initialMessages }: Props) => {
 		error,
 		mutate,
 	} = useSWR<Message[] | null>("/api/getMessages", fetcher);
+
+	const messagesEndRef = useRef(null);
+
+	const scrollToBottom = () => {
+		messagesEndRef.current?.scrollIntoView({ behavior: "smooth" });
+	};
+
+	useEffect(() => {
+		scrollToBottom();
+	}, [messages]);
 
 	useEffect(() => {
 		const channel = clientPusher.subscribe("messages");
@@ -40,6 +50,7 @@ export const ChatMessage = ({ initialMessages }: Props) => {
 			{(messages || initialMessages)?.map((msg) => (
 				<SingleMessage key={msg.id} msg={msg} />
 			))}
+			<div ref={messagesEndRef} />
 		</div>
 	);
 };
