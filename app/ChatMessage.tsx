@@ -14,7 +14,9 @@ export const ChatMessage = () => {
 
 	useEffect(() => {
 		const channel = clientPusher.subscribe("messages");
+		// Dont update cache if you sent msg
 		channel.bind("new-message", async (data: Message) => {
+			if (messages?.find((message) => message.id === data.id)) return;
 			if (!messages) {
 				mutate(fetcher);
 			} else {
