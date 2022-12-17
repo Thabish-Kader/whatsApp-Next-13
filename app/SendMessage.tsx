@@ -1,12 +1,17 @@
 "use client";
-
+import useSWR from "swr";
 import { useState } from "react";
 import { v4 as uuidv4 } from "uuid";
 import { sendMessage } from "../lib/sendMessage";
+import { fetcher } from "../lib/getMessages";
 export const SendMessage = () => {
 	const [input, setInput] = useState("");
-
-	const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+	// const {
+	// 	data: messages,
+	// 	error,
+	// 	mutate,
+	// } = useSWR("/api/getMessages", fetcher);
+	const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
 		e.preventDefault();
 
 		if (!input) return;

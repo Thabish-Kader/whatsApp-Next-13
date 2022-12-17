@@ -11,3 +11,4 @@ after: ` await redis.hset("messages", data.id, JSON.stringify(modifiedMessage));
 ### Resoruces
 
 -   [Caching NextJS Apps with Serverless Redis using Upstash](https://flatlogic.com/blog/caching-nextjs-apps-with-serverless-redis-using-upstash/)
+-   [Sorting an array based on dates](https://www.scaler.com/topics/javascript-sort-an-array-of-objects/)

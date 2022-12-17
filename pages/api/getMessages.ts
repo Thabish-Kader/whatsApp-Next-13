@@ -20,8 +20,12 @@ export default async function handler(
 		return;
 	}
 	const messagesRes = await redis.hvals("messages");
-	const messages: Message[] = messagesRes.map((msg) => JSON.parse(msg));
+	const messages: Message[] = messagesRes
+		.map((msg) => JSON.parse(msg))
+		.sort((x, y) => {
+			return x.created_at - y.created_at;
+		});
 
-	// console.log(messages);
+	console.log(messages);
 	res.status(200).json({ messages });
 }
