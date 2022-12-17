@@ -5,7 +5,11 @@ import { fetcher } from "../lib/getMessages";
 import { clientPusher } from "../pusher";
 import { SingleMessage } from "./SingleMessage";
 
-export const ChatMessage = () => {
+type Props = {
+	initialMessages: Message[];
+};
+
+export const ChatMessage = ({ initialMessages }: Props) => {
 	const {
 		data: messages,
 		error,
@@ -26,10 +30,14 @@ export const ChatMessage = () => {
 				});
 			}
 		});
+		return () => {
+			channel.unbind_all();
+			channel.unsubscribe();
+		};
 	}, [messages, mutate, clientPusher]);
 	return (
 		<div className="space-y-5 max-w-2xl lg:max-w-5xl mx-auto pb-24 mt-5">
-			{messages?.map((msg) => (
+			{(messages || initialMessages)?.map((msg) => (
 				<SingleMessage key={msg.id} msg={msg} />
 			))}
 		</div>

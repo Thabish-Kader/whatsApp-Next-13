@@ -5,6 +5,10 @@ module.exports = {
 		appDir: true,
 	},
 	images: {
-		domains: ["media.cnn.com", "my.kumonglobal.com"],
+		domains: [
+			"media.cnn.com",
+			"my.kumonglobal.com",
+			"platform-lookaside.fbsbx.com",
+		],
 	},
 };
