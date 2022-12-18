@@ -11,4 +11,7 @@ module.exports = {
 			"platform-lookaside.fbsbx.com",
 		],
 	},
+	eslint: {
+		ignoreDuringBuilds: true,
+	},
 };
