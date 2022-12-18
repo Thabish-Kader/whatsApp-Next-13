@@ -47,7 +47,7 @@ export const ChatMessage = ({ initialMessages }: Props) => {
 	}, [messages, mutate, clientPusher]);
 	return (
 		<div className="space-y-5 max-w-2xl lg:max-w-5xl mx-auto pb-24 mt-5">
-			{(messages || initialMessages)?.map((msg) => (
+			{messages?.map((msg) => (
 				<SingleMessage key={msg.id} msg={msg} />
 			))}
 			<div ref={messagesEndRef} />
