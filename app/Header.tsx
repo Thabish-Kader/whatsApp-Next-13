@@ -20,7 +20,7 @@ export const Header = () => {
 				</div>
 
 				{/* sign in/out button */}
-				<Link href="/auth/signIn" className="button">
+				<Link href="/auth/signin" className="button">
 					Sign In
 				</Link>
 			</header>

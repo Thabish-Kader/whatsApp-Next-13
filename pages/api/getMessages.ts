@@ -1,6 +1,5 @@
 // Next.js API route support: https://nextjs.org/docs/api-routes/introduction
 import type { NextApiRequest, NextApiResponse } from "next";
-import { loadGetInitialProps } from "next/dist/shared/lib/utils";
 import { redis } from "../../redis";
 
 type Error = {
